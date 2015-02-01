@@ -67,7 +67,7 @@ public class DbDao {
 	
 	// 执行查询
 	public ResultSet query(String sql, Object... args) throws Exception {
-		PreparedStatement pstmt = getConnection().prepareStatement(sql);
+		PreparedStatement pstmt = getConnection().prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 		for (int i = 0; i < args.length; ++i) {
 			pstmt.setObject(i + 1, args[i]);
 		}

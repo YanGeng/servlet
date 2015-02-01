@@ -12,8 +12,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import com.sun.net.httpserver.HttpServer;
-
 /**
  * Servlet Filter implementation class LogFilter
  */

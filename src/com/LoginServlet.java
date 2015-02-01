@@ -35,9 +35,9 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("解码后：" + user);
 		String pass = request.getParameter("pass");
 		try {
-			DbDao dd = new DbDao("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/j2ee_go", "root", "");
+			DbDao dd = new DbDao("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/test", "root", "");
 			// 查询结果集    jdbc:mysql://localhost:3306/j2ee_go
-			ResultSet rs = dd.query("select password from user_info" + " where user = ?", user);
+			ResultSet rs = dd.query("select password from test.user" + " where user = ?", user);
 			
 			if (rs.next()) {
 				// 用户名和密码匹配
@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
 			} else {
 				errMsg += "您的用户名不存在，请先注册";
 			}
+			dd.closeConn();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
